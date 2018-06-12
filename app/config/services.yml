@@ -45,3 +45,9 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, label: BlogPost }
         public: true
+    admin.visitor:
+        class: AppBundle\Admin\VisitorAdmin
+        arguments: [~, AppBundle\Entity\Visitor, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Visitor }
+        public: true
