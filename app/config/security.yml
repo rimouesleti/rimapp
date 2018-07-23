@@ -8,8 +8,6 @@ security:
          #   - ROLE_SONATA_PAGE_ADMIN_PAGE_EDIT  # if you are using acl then this line must be commented
     encoders:
         FOS\UserBundle\Model\UserInterface: sha512
-    acl:
-        connection: default
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         fos_userbundle:
@@ -27,7 +25,6 @@ security:
             form_login:
                 provider:       fos_userbundle
                 login_path:     /admin/login
-                use_forward:    false
                 check_path:     /admin/login_check
                 failure_path:   null
             logout:
