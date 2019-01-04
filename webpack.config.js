@@ -8,7 +8,12 @@ Encore
     .setPublicPath('/build')
 
     // will create web/build/app.js and web/build/app.css
-    .addEntry('app', './assets/js/app.js')
+    .addEntry('js/app', './assets/js/entry.js')
+
+    // Style Entry :: Common
+    .addStyleEntry('css/common', './assets/scss/common.scss')
+
+    .enableSassLoader()
 
     // allow legacy applications to use $/jQuery as a global variable
     .autoProvidejQuery()
@@ -22,6 +27,19 @@ Encore
     // show OS notifications when builds finish/fail
     .enableBuildNotifications()
 
+    .addRule({
+        test: require.resolve('jquery'),
+        use: [
+            {
+                loader: 'expose-loader',
+                options: 'jQuery',
+            },
+            {
+                loader: 'expose-loader',
+                options: '$',
+            },
+        ],
+    })
 // create hashed filenames (e.g. app.abc123.css)
 // .enableVersioning()
 
